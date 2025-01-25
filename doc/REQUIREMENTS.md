@@ -24,12 +24,10 @@ _**What does the first tool need to do?**_
 ### Townfolk Generator
 
 1. Create random NPCs that the players encounter on their adventures. Each of the NPCs needs:
-
    1. A name
    2. Physical description
    3. Personality
    4. Relative power dynamic
-
 2. A method (thinking some lists?) the Feature can utilize to create names, appearances, personalites.
 3. A method to faciliate NPC generation of basic in-game statistics.
 4. A method to allow a user to supply details which give framework/boundaries to the NPC generation; such as profession, species, etc.
