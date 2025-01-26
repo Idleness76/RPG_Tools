@@ -8,12 +8,12 @@ Third, cross referencing components; indentify their dependencies. This helps de
 
 ## Static Design
 
-Come back to this once there's a better idea of what the app needs to do for us.
+<img src="./images/TownfolkGen_StaticArch.png" alt="An architectural diagram of static design showing CONCEPTUAL components that will make up the application">
 
 ## Detailed Designs
 
-No details possible until having a better idea of what is being built
+Likely do detailed design inside the application, then document here as progress happens.
 
 ## Dependency Assessment
 
-Nothiung here yet. Dependent on previous two steps.
+Once the basic building blocks have been added to the application, then document who depends on what here.
