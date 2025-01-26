@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{0737AFB8-868F-4E3B-941E-87F61D3D0D41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Managers", "Managers", "{5E218D4A-BB3E-EA3B-A91E-3FDDF2C06FEB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Engines", "Engines", "{C413B5E3-D468-3AA7-62B4-C1AFA444D573}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ResourceAccess", "ResourceAccess", "{7FF60134-3827-9582-D71A-FB53DA2F691D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTools.NPCAccess", "ResourceAccess\GameTools.NPCAccess\GameTools.NPCAccess.csproj", "{B468FC87-7A31-463D-BFB4-DAC11B1F2A56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleSetAccess", "ResourceAccess\RuleSetAccess\RuleSetAccess.csproj", "{D90BAF7B-EFA8-4140-B2B2-84C5F7C11DF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTools.DiceEngine", "Engines\GameTools.DiceEngine\GameTools.DiceEngine.csproj", "{BAB659A2-BE5F-407C-88AB-48BA158F9A1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTools.TownfolkManager", "Managers\GameTools.TownfolkManager\GameTools.TownfolkManager.csproj", "{361C6335-3E35-44A2-B275-324094CC080B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0737AFB8-868F-4E3B-941E-87F61D3D0D41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0737AFB8-868F-4E3B-941E-87F61D3D0D41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0737AFB8-868F-4E3B-941E-87F61D3D0D41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0737AFB8-868F-4E3B-941E-87F61D3D0D41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B468FC87-7A31-463D-BFB4-DAC11B1F2A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B468FC87-7A31-463D-BFB4-DAC11B1F2A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B468FC87-7A31-463D-BFB4-DAC11B1F2A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B468FC87-7A31-463D-BFB4-DAC11B1F2A56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D90BAF7B-EFA8-4140-B2B2-84C5F7C11DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D90BAF7B-EFA8-4140-B2B2-84C5F7C11DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D90BAF7B-EFA8-4140-B2B2-84C5F7C11DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D90BAF7B-EFA8-4140-B2B2-84C5F7C11DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAB659A2-BE5F-407C-88AB-48BA158F9A1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB659A2-BE5F-407C-88AB-48BA158F9A1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB659A2-BE5F-407C-88AB-48BA158F9A1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB659A2-BE5F-407C-88AB-48BA158F9A1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{361C6335-3E35-44A2-B275-324094CC080B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{361C6335-3E35-44A2-B275-324094CC080B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{361C6335-3E35-44A2-B275-324094CC080B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{361C6335-3E35-44A2-B275-324094CC080B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B468FC87-7A31-463D-BFB4-DAC11B1F2A56} = {7FF60134-3827-9582-D71A-FB53DA2F691D}
+		{D90BAF7B-EFA8-4140-B2B2-84C5F7C11DF3} = {7FF60134-3827-9582-D71A-FB53DA2F691D}
+		{BAB659A2-BE5F-407C-88AB-48BA158F9A1F} = {C413B5E3-D468-3AA7-62B4-C1AFA444D573}
+		{361C6335-3E35-44A2-B275-324094CC080B} = {5E218D4A-BB3E-EA3B-A91E-3FDDF2C06FEB}
+	EndGlobalSection
+EndGlobal
