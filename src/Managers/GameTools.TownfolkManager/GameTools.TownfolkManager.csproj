@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Engines\GameTools.DiceEngine\GameTools.DiceEngine.csproj" />
+    <ProjectReference Include="..\..\ResourceAccess\GameTools.NPCAccess\GameTools.NPCAccess.csproj" />
+    <ProjectReference Include="..\..\ResourceAccess\GameTools.RulesetAccess\GameTools.RulesetAccess.csproj" />
+  </ItemGroup>
+
 </Project>
