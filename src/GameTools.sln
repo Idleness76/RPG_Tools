@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTools.TownfolkManager",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTools.RulesetAccess", "ResourceAccess\GameTools.RulesetAccess\GameTools.RulesetAccess.csproj", "{E47AC45E-2CC5-40C5-9E07-D57559373C3B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTools.DiceEngine.Tests", "..\tests\GameTools.DiceEngine.Tests\GameTools.DiceEngine.Tests.csproj", "{8712819C-59A8-495B-B767-6CD4783916FD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{E47AC45E-2CC5-40C5-9E07-D57559373C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E47AC45E-2CC5-40C5-9E07-D57559373C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E47AC45E-2CC5-40C5-9E07-D57559373C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8712819C-59A8-495B-B767-6CD4783916FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8712819C-59A8-495B-B767-6CD4783916FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8712819C-59A8-495B-B767-6CD4783916FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8712819C-59A8-495B-B767-6CD4783916FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,5 +62,6 @@ Global
 		{BAB659A2-BE5F-407C-88AB-48BA158F9A1F} = {C413B5E3-D468-3AA7-62B4-C1AFA444D573}
 		{361C6335-3E35-44A2-B275-324094CC080B} = {5E218D4A-BB3E-EA3B-A91E-3FDDF2C06FEB}
 		{E47AC45E-2CC5-40C5-9E07-D57559373C3B} = {7FF60134-3827-9582-D71A-FB53DA2F691D}
+		{8712819C-59A8-495B-B767-6CD4783916FD} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal
