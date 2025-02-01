@@ -1,27 +1,38 @@
-namespace GameTools.DiceEngine.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-/// <summary>
-/// DiceTray carries the result of the Roll operation back to the component who uses the DiceBag.
-/// </summary>
-
-public class DiceTray
+namespace GameTools.DiceEngine.Contracts
 {
-    private List<RolledMathRock> _rocks;
-
-    public DiceTray()
+    /// <summary>
+    /// DiceTray carries the result of the Roll operation back to the component who uses the DiceBag.
+    /// </summary>
+    public class DiceTray
     {
-        _rocks = new List<RolledMathRock>();
-    }
+        private List<RolledMathRock> _rocks;
 
-    public int[] Rolls => [.. _rocks.Select(r => r.Value)];
+        public DiceTray() : this(resultModifier: 0) { }
 
-    public int Result => _rocks.Sum(r => r.Value);
+        public DiceTray(int resultModifier)
+        {
+            _rocks = new List<RolledMathRock>();
+            ResultModifier = resultModifier;
+        }
 
-    public int RollCount => _rocks.Count;
+        public int ResultModifier { get; private set; }
 
-    public void AddRoll(MathRockKind kind, int result)
-    {
-        var roll = new RolledMathRock(kind, result);
-        _rocks.Add(roll);
+        public int[] Rolls => _rocks.Select(r => r.Value).ToArray();
+
+        public int UnadjustedResult => _rocks.Sum(r => r.Value);
+
+        public int Result => Math.Max(0, UnadjustedResult + ResultModifier);
+
+        public int RollCount => _rocks.Count;
+
+        public void AddRoll(MathRockKind kind, int result)
+        {
+            var roll = new RolledMathRock(kind, result);
+            _rocks.Add(roll);
+        }
     }
 }

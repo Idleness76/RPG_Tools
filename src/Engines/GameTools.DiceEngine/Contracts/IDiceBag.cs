@@ -16,7 +16,7 @@ public interface IDiceBag
     /// <param name="resultModifier">Do we need to change the result before returning it?</param>
     /// <returns></returns>
 
-    DiceTray Roll(int numberOfDice, MathRockKind diceKind, int? resultModifier = null);
+    DiceTray Roll(int numberOfDice, MathRockKind diceKind, int resultModifier = 0);
 
     // implement rollModifier later
     // int Roll(int numberOfDice, MathRockKind diceKind, int? resultModifier = null, object? rollModifier = null);
