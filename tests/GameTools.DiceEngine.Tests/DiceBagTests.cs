@@ -35,17 +35,17 @@ public class DiceBagModifiedTestData : IEnumerable<object[]>
     {
         var testCases = Enumerable.Range(0, 5).Select(_ =>
         {
-            int resultModifier;
+            int rollAdjustment;
             do
             {
-                resultModifier = _random.Next(-10, 11); // Random result modifier between -10 and 10, exluding 0
-            } while (resultModifier == 0);
+                rollAdjustment = _random.Next(-10, 11); // Random result modifier between -10 and 10, exluding 0
+            } while (rollAdjustment == 0);
 
             return new object[]
             {
         _random.Next(1, 8), // Random number of dice between 1 and 7
         _mathRockKinds[_random.Next(_mathRockKinds.Length)], // Random MathRockKind
-        resultModifier
+        rollAdjustment
             };
         }).ToList();
 
@@ -136,43 +136,75 @@ public class DiceBagTests
     #endregion // Basic Roll Tests
 
     // ==============================
-    #region Roll Modifier Tests
+    #region Roll Adjustment Tests
 
     /// <summary>
-    /// The result of the Roll is modified by the resultModifier
+    /// The result of the Roll is adjusted by the rollAdjustment
     /// </summary>
     [Theory]
     [ClassData(typeof(DiceBagModifiedTestData))]
-    public void DiceBag_Roll_WithNonZeroRollModifier_AppliesModifierToResult(int numberOfDice, MathRockKind mathRock, int resultModifier)
+    public void DiceBag_Roll_WithNonZeroRollAdjustment_AppliesAdjustmentToResult(int numberOfDice, MathRockKind mathRock, int rollAdjustment)
     {
         IDiceBag testObject = new DiceBag();
 
-        DiceTray modifiedDiceRoll = testObject.Roll(numberOfDice, mathRock, resultModifier);
+        DiceTray modifiedDiceRoll = testObject.Roll(numberOfDice, mathRock, rollAdjustment);
 
-        // Assert.Equal(Math.Max(0, modifiedDiceRoll.UnadjustedResult + resultModifier), modifiedDiceRoll.Result);
         Assert.True(modifiedDiceRoll.Result != modifiedDiceRoll.UnadjustedResult);
     }
 
     /// <summary>
-    /// The modified result, but never goes below 0, or above the maximum possible result
+    /// The result can be adjusted, but never goes below 0, or above the maximum possible result
     /// </summary>
     [Theory]
     [ClassData(typeof(DiceBagModifiedTestData))]
-    public void DiceBag_Roll_WithNonZeroRollModifier_NeverBelowZeroORAboveMax(int numberOfDice, MathRockKind mathRock, int resultModifier)
+    public void DiceBag_Roll_WithNonZeroRollAdjustment_NeverBelowZeroORAboveMax(int numberOfDice, MathRockKind mathRock, int rollAdjustment)
     {
         IDiceBag testObject = new DiceBag();
 
-        int expectedMaximum = Math.Max(0, (numberOfDice * (int)mathRock) + resultModifier);
+        int expectedMaximum = Math.Max(0, (numberOfDice * (int)mathRock) + rollAdjustment);
 
-        DiceTray modifiedDiceRoll = testObject.Roll(numberOfDice, mathRock, resultModifier);
+        DiceTray modifiedDiceRoll = testObject.Roll(numberOfDice, mathRock, rollAdjustment);
 
         Assert.True(modifiedDiceRoll.Result >= 0);
         Assert.InRange(modifiedDiceRoll.Result, 0, expectedMaximum);
     }
 
+    #endregion // Roll Adjustment Tests
+
+    // ==============================
+    #region Advantage/Disadvantage Tests
+
+    /// <summary>
+    /// When rolling with advantage, the result should be the highest of the two rolls
+    /// </summary>
+    [Fact]
+    public void DiceBag_Roll_WithAdvantage_Returns_HighestRoll()
+    {
+        IDiceBag testObject = new DiceBag();
+
+        var diceTray = testObject.Roll(1, MathRockKind.D20, rollModifier: RollModifier.Advantage);
+
+        Assert.Equal(2, diceTray.RollCount); // Ensure two rolls were made, even though only one is sent
+        Assert.True(diceTray.Rolls[0] == diceTray.Result);
+        Assert.True(diceTray.Rolls[1] <= diceTray.Result);
+    }
 
 
+    /// <summary>
+    /// When rolling with disadvantage, the result should be the lowest of the two rolls
+    /// </summary>
+    [Fact]
+    public void DiceBag_Roll_WithDisadvantage_Returns_LowestRoll()
+    {
+        IDiceBag testObject = new DiceBag();
+
+        var diceTray = testObject.Roll(1, MathRockKind.D20, rollModifier: RollModifier.Disadvantage);
+
+        Assert.Equal(2, diceTray.RollCount); // Ensure two rolls were made, even though only one is sent
+        Assert.True(diceTray.Rolls[0] >= diceTray.Result);
+        Assert.True(diceTray.Rolls[1] == diceTray.Result);
+    }
 
 
-    #endregion // Roll Modifier Tests
+    #endregion // Advantage/Disadvantage Tests
 }

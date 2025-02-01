@@ -41,9 +41,9 @@ Solution Proposal:
 
    a. HowMany is the number of dice to roll.  
    b. WhatKind is the type of dice used.  
-   c. ResultModifier will add or sibtract a provided value from the reuslt once calculated.  
+   c. RollAdjustment will add or sibtract a provided value from the reuslt once calculated.  
    d. RollModifier is a special condition that will change the number of dice that are rolled, and how the total is calculated.
 
-   e. RollDice(HowMany?, WhatKind?, ResultModifier, RollModifier)
+   e. RollDice(HowMany?, WhatKind?, RollAdjustment, RollModifier)
 
 > All of these concepts will be put into a single 'section' of the code when it's created. That section will be called a DiceEngine. The entity which owns the FUNCTION of rolling the dice a DiceBag.

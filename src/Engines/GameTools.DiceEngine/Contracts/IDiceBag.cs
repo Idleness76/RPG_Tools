@@ -9,15 +9,14 @@ public interface IDiceBag
 {
     /// <summary>
     /// Generate a random number by simulating the roll of a number of dice, each of which has a number of sides determined by the diceKind parameter.
-    /// There is an optional resultModifier parameter that can be used to add or subtract from the result of the dice roll.
+    /// There is an optional rollAdjustment parameter that can be used to add or subtract from the result of the dice roll.
     /// </summary>
     /// <param name="numberOfDice">How many dice to roll?</param>
     /// <param name="diceKind">How many sides do these dice have?</param>
-    /// <param name="resultModifier">Do we need to change the result before returning it?</param>
+    /// <param name="rollAdjustment">(Optional) Do we need to change the result before returning it?</param>
+    /// <param name="rollModifier">(Optional) Do we have advantage or disadvantage on this roll?</param>
     /// <returns></returns>
 
-    DiceTray Roll(int numberOfDice, MathRockKind diceKind, int resultModifier = 0);
+    DiceTray Roll(int numberOfDice, MathRockKind diceKind, int rollAdjustment = 0, RollModifier rollModifier = RollModifier.None);
 
-    // implement rollModifier later
-    // int Roll(int numberOfDice, MathRockKind diceKind, int? resultModifier = null, object? rollModifier = null);
 }

@@ -11,21 +11,46 @@ namespace GameTools.DiceEngine.Contracts
     {
         private List<RolledMathRock> _rocks;
 
-        public DiceTray() : this(resultModifier: 0) { }
+        public DiceTray() : this(rollAdjustment: 0, RollModifier.None) { }
 
-        public DiceTray(int resultModifier)
+        public DiceTray(int rollAdjustment, RollModifier rollModifier)
         {
             _rocks = new List<RolledMathRock>();
-            ResultModifier = resultModifier;
+            RollAdjustment = rollAdjustment;
+            RollModifier = rollModifier;
         }
 
-        public int ResultModifier { get; private set; }
+        public int RollAdjustment { get; private set; }
 
-        public int[] Rolls => _rocks.Select(r => r.Value).ToArray();
+        public RollModifier RollModifier { get; private set; }
 
-        public int UnadjustedResult => _rocks.Sum(r => r.Value);
+        private bool _rollIsModified { get; set; }
 
-        public int Result => Math.Max(0, UnadjustedResult + ResultModifier);
+        public int[] Rolls
+        {
+            get
+            {
+                HandleRollModifier();
+                return _rocks.Select(r => r.Value).ToArray();
+            }
+        }
+
+        public int UnadjustedResult
+        {
+            get
+            {
+                HandleRollModifier();
+                return _rocks.Where(r => !r.IsDiscarded).Sum(r => r.Value);
+            }
+        }
+
+        public int Result
+        {
+            get
+            {
+                return Math.Max(0, UnadjustedResult + RollAdjustment);
+            }
+        }
 
         public int RollCount => _rocks.Count;
 
@@ -33,6 +58,30 @@ namespace GameTools.DiceEngine.Contracts
         {
             var roll = new RolledMathRock(kind, result);
             _rocks.Add(roll);
+            _rollIsModified = false;
+        }
+
+        private void HandleRollModifier()
+        {
+            if (_rollIsModified) return;
+
+            _rocks.ForEach(r => r.ResetDiscard());
+
+            if (RollModifier != RollModifier.None)
+            {
+                _rocks = _rocks.OrderByDescending(r => r.Value).ToList();
+            }
+
+            if (RollModifier == RollModifier.Advantage)
+            {
+                _rocks.Last().Discard();
+                _rollIsModified = true;
+            }
+            else if (RollModifier == RollModifier.Disadvantage)
+            {
+                _rocks.First().Discard();
+                _rollIsModified = true;
+            }
         }
     }
 }
