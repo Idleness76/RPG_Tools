@@ -1,5 +1,4 @@
 ﻿using GameTools.DiceEngine.Contracts;
-
 namespace GameTools.DiceEngine;
 
 public class DiceBag : IDiceBag
