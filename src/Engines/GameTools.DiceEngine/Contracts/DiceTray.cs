@@ -26,12 +26,12 @@ namespace GameTools.DiceEngine.Contracts
 
         private bool _rollIsModified { get; set; }
 
-        public int[] Rolls
+        public RolledMathRock[] Rolls
         {
             get
             {
                 HandleRollModifier();
-                return _rocks.Select(r => r.Value).ToArray();
+                return _rocks.ToArray(); // Return the array of RolledMathRock objects
             }
         }
 
